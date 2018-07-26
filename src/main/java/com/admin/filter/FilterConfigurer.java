@@ -3,7 +3,7 @@ package com.admin.filter;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
-public class WebConfiguration {
+public class FilterConfigurer {
 
 	/*@Bean
 	public FilterRegistrationBean<AccessLogFilter> filterRegistration() {
