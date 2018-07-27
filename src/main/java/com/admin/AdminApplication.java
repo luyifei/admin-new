@@ -5,7 +5,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.web.servlet.ServletComponentScan;
 
 @SpringBootApplication
-@ServletComponentScan("com.admin.filter")
+@ServletComponentScan
 public class AdminApplication {
 
 	public static void main(String[] args) {
