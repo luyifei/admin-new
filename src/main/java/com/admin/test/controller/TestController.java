@@ -1,6 +1,7 @@
 package com.admin.test.controller;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -13,7 +14,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.admin.entity.Person;
+import com.admin.test.entity.Person;
 
 @Controller
 public class TestController {
@@ -42,6 +43,7 @@ public class TestController {
         mav.addObject("text", "<h1>text</h1>");
         mav.addObject("utext", "<h1>utext</h1>");
         Person person = new Person("张三", 21);
+        person.setCurDate(new Date());
         mav.addObject("object", person);
         mav.addObject("with", person);
         List<Person> personList = new ArrayList<>();

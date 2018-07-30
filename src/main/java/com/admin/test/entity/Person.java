@@ -1,8 +1,11 @@
-package com.admin.entity;
+package com.admin.test.entity;
+
+import java.util.Date;
 
 public class Person {
 	private String name;
 	private Integer age;
+	private Date curDate;
 
 	public Person() {
 		super();
@@ -29,4 +32,13 @@ public class Person {
 	public Integer setAge(Integer age) {
 		return age;
 	}
+
+	public Date getCurDate() {
+		return curDate;
+	}
+
+	public void setCurDate(Date curDate) {
+		this.curDate = curDate;
+	}
+
 }

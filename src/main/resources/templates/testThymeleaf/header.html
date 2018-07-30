@@ -1,10 +1,14 @@
 <!DOCTYPE HTML>
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" >
-<head>
-    <meta content="text/html;charset=UTF-8"/>
-    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head th:fragment="head(title,links,scripts)">
+<title th:replace="${title}">The awesome application</title>  
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<meta content="text/html;charset=UTF-8" />
+<th:block th:replace="${links}" />  
+<th:block th:replace="${scripts}" />  
 </head>
 <body>
-<div th:fragment="header">this is header</div>
+	<div th:fragment="header">this is header</div>
 </body>
 </html>
