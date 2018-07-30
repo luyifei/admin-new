@@ -1,0 +1,105 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta content="text/html;charset=UTF-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+</head>
+<body>
+    <div>
+	<input id="id" th:id="'xxx' + ${id}" />
+	</div>
+	<div th:text="${text}">text</div>
+	<div th:utext="${utext}">utext</div>
+	<div th:object="${object}">
+		<input type="text" th:field="*{name}" /> <input type="text"
+			th:value="*{name}" />
+	</div>
+	<input type="text" th:value="${object.name}" />
+	<div th:with="obj=${with}">
+		<span th:text="${obj.name}"></span>
+	</div>
+
+    <div>
+	<table>
+		<tr th:each="person,state:${personList}">
+			<td th:text="${person.name}"></td>
+			<td th:text="${person.age}"></td>
+			<td th:text="${state.index}"></td>
+			<td th:text="${state.count}"></td>
+			<td th:text="${state.size}"></td>
+			<td th:text="${state.current}"></td>
+			<td th:text="${state.even}"></td>
+			<td th:text="${state.odd}"></td>
+			<td th:text="${state.first}"></td>
+			<td th:text="${state.last}"></td>
+		</tr>
+	</table>
+	</div>
+	<div th:if="${object.age == 21}">if1</div>
+	<div th:if="${object.age}==21">if2</div>
+	<div th:unless="${object.age == 21}">unless1</div>
+	<div th:unless="${object.age}==21">unless2</div>
+	<div th:switch="${object.name}">
+		<div th:case="${'张三'}">张三</div>
+		<div th:case="${'张三0'}">张三0</div>
+		<div th:case="${'张三1'}">张三1</div>
+	</div>
+	<div>
+	<select>
+		<option th:selected="${object.age} ==21" th:value="${object.age}">21岁</option>
+		<option th:selected="${object.age} ==22" th:value="${object.age}">22岁</option>
+	</select>
+    </div>
+	<div th:inline="text">你好，[[${object.name}]]</div>
+    <div>
+	<tbody th:remove="all-but-first">
+		<!-- 或者表达式th:remove="${choice}? all : all-but-first"> -->
+		<tr>
+			<td>Tom</td>
+			<td>男</td>
+		</tr>
+		<tr>
+			<td>Lucy13</td>
+			<td>女</td>
+		</tr>
+	</tbody>
+	</div>
+	<div>
+		<input th:attr="value=${object.name}" /> 
+		<input th:attr="value=${object.name},name=name" />
+	</div>
+	<div>
+		<input type="button" th:value="按钮"
+			th:onclick="'javascript:test(\''+${object.name}+'\')'" />
+	</div>
+	<div>
+		<a th:href="@{/testThLabel?(name=李四,age=${object.age})}">testHref</a>
+	</div>
+
+	<div th:style="'font-size: 24px;'">大字体</div>
+
+	<div th:insert="/testThymeleaf/header::header"></div>
+	<div th:replace="/testThymeleaf/header::header"></div>
+	<div th:include="/testThymeleaf/header::header"></div>
+	
+	<div th:fragment="get(name,age)">
+        <p th:text="${name} + ' - ' + ${age}">...</p>
+	</div>
+	<div th:insert="::get(${object.name},${object.age})">...</div>
+	<div th:replace="::get(name=${object.name},age=${object.age})">...</div>
+	<div th:include="::get(age=${object.age},name=${object.name})">...</div>
+</body>
+<script th:src="@{/test.js}"></script>
+<script type="text/javascript" th:inline="javascript">
+/*<![CDATA[*/
+var username = /*[[${object.age}]]*/;
+var userage = [[${object}]];
+/*]]>*/
+</script>
+<script type="text/javascript" th:inline="none">
+    var data = [["2012-05-07", 6], ["2012-04-16", 4]];
+    alert(data);
+</script>
+
+</html>
