@@ -7,7 +7,7 @@ import org.springframework.boot.web.servlet.ServletComponentScan;
 
 @SpringBootApplication
 @ServletComponentScan
-@MapperScan
+@MapperScan("com.admin.*.mapper")
 public class AdminApplication {
 
 	public static void main(String[] args) {

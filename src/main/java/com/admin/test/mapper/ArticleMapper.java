@@ -5,6 +5,7 @@ import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Result;
 import org.apache.ibatis.annotations.Results;
 import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.Update;
 
 import com.admin.test.entity.Article;
 
@@ -20,6 +21,7 @@ public interface ArticleMapper {
 			@Result(property = "categoryId", column = "category_id"),
 			@Result(property = "readCount", column = "read_count"), @Result(property = "summary", column = "summary") })
 	Article selectByPrimaryKey(Integer id);
-	
+
+	@Update("UPDATE t_article SET title=#{title} WHERE id =#{id}")
 	int updateByPrimaryKey(Article record);
 }
